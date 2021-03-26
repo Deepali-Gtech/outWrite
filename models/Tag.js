@@ -23,13 +23,6 @@ Tag.init(
                 key: 'id'
             }
         },
-        prompt_id: {
-            type:DataTypes.INTEGER,
-            references: {
-                model: 'prompt',
-                key: 'id',
-            },
-        },
         sequelize,
         timestamps: false,
         freezeTableName: true,
@@ -37,4 +30,4 @@ Tag.init(
         modelName: 'prompt',
     }
 
-)
+);

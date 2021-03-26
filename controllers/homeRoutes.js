@@ -12,6 +12,26 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/create", async (req, res) => {
+  try {
+    res.render("storypage", {
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/dashboard", async (req, res) => {
+  try {
+    res.render("dashboard", {
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // Use withAuth middleware to prevent access to route
 router.get("/profile", withAuth, async (req, res) => {
   try {

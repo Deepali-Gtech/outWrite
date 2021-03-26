@@ -1,0 +1,16 @@
+[{
+    "id": 1,
+    "name": "fantasy"
+},
+{
+    "id": 2,
+    "name": "horror"
+},
+{
+    "id": 3,
+    "name": "science fiction"
+},
+{
+    "id": 4,
+    "name": "romance"
+}]

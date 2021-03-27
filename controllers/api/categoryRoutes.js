@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const {  } = require('../../models');
+const { Category, Prompt } = require('../../models');
 
 // GET all data of instance
 router.get('/', async (req, res) => {
   try {
-    const placeHolderData = await modelInstance.findAll();
-    res.status(200).json(placeHolderData);
+    const categoryData = await Category.findAll(req.params.id);
+    res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -14,17 +14,17 @@ router.get('/', async (req, res) => {
 // GET a single instance
 router.get('/:id', async (req, res) => {
   try {
-    const placeHolderData = await modelInstance.findByPk(req.params.id, {
+    const categoryData = await Category.findByPk(req.params.id, {
       // JOIN table data
-      include: [{ model:}]
+      include: [{ model: Prompt}]
     });
 
-    if (!placeHolderData) {
-      res.status(404).json({ message: 'No instance found with this id!' });
+    if (!categoryData) {
+      res.status(404).json({ message: 'No category found with this id!' });
       return;
     }
 
-    res.status(200).json(placeHolderData);
+    res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -33,7 +33,7 @@ router.get('/:id', async (req, res) => {
 // CREATE an instance
 router.post('/', async (req, res) => {
   try {
-    const placeHolderData = await modelInstance.create(req.body);
+    const placeHolderData = await Category.create(req.body);
     res.status(200).json(placeHolderData);
   } catch (err) {
     res.status(400).json(err);

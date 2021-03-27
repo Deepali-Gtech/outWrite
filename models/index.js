@@ -1,5 +1,6 @@
 // import models
 const User = require('./User');
+// <<<<<<< models
 const Category = require('./Category');
 const Comment = require('./Comment');
 const Prompt = require('./Prompt');
@@ -40,3 +41,8 @@ User.hasMany(Prompt, {
 
 
 module.exports = { User, Category, Comment, Prompt, };
+// =======
+const Quote = require('./Quote');
+
+module.exports = { User, Quote };
+// >>>>>>> main

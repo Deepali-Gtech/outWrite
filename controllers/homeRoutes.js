@@ -1,6 +1,7 @@
 const router = require("express").Router();
-const { Project, User } = require("../models");
+const { Project, Quote, User } = require("../models");
 const withAuth = require("../utils/auth");
+var shuffle = require('shuffle-array')
 
 router.get("/", async (req, res) => {
   try {
@@ -11,6 +12,53 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get("/create", async (req, res) => {
+  try {
+    res.render("storypage", {
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/dashboard", async (req, res) => {
+  try {
+    res.render("dashboard", {
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+router.get("/storyview", async (req, res) => {
+  try {
+    const quotes = await Quote.findAll({});
+    const quotesData = quotes.map((quote) => {
+        return quote.dataValues;
+      });
+    shuffle(quotesData);
+    res.render("storyview", {
+      logged_in: req.session.logged_in,
+      quotesData,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+// router.get("/storyview", async (req, res) => {
+//   try {
+//     res.render("storyview", {
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // Use withAuth middleware to prevent access to route
 router.get("/profile", withAuth, async (req, res) => {

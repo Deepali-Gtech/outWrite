@@ -1,30 +1,30 @@
 const router = require('express').Router();
-const {  } = require('../../models');
+const { Prompt, Category, Tag } = require('../../models');
 
 // GET all data of instance
 router.get('/', async (req, res) => {
   try {
-    const placeHolderData = await modelInstance.findAll();
-    res.status(200).json(placeHolderData);
+    const promptData = await Prompt.findAll(req.params.id,);
+    res.status(200).json(promptData );
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// GET a single instance
+// GET a single instanceg
 router.get('/:id', async (req, res) => {
   try {
-    const placeHolderData = await modelInstance.findByPk(req.params.id, {
+    const promptData  = await Prompt.findByPk(req.params.id, {
       // JOIN table data
-      include: [{ model:}]
+      include: [{ model: Category}, {model: Tag}]
     });
 
-    if (!placeHolderData) {
-      res.status(404).json({ message: 'No instance found with this id!' });
+    if (!promptData) {
+      res.status(404).json({ message: 'No prompt found with this id!' });
       return;
     }
 
-    res.status(200).json(placeHolderData);
+    res.status(200).json(promptData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -33,8 +33,22 @@ router.get('/:id', async (req, res) => {
 // CREATE an instance
 router.post('/', async (req, res) => {
   try {
-    const placeHolderData = await modelInstance.create(req.body);
-    res.status(200).json(placeHolderData);
+    const promptData = await Prompt.create(req.body);
+    res.status(200).json(promptData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+
+});
+
+router.put('/', async (req, res) => {
+  try {
+    const promptData = await Prompt.update({
+      where: {
+        id:req.body.id,
+      },
+    });
+    res.status(200).json(promptData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -43,18 +57,18 @@ router.post('/', async (req, res) => {
 // DELETE an instance
 router.delete('/:id', async (req, res) => {
   try {
-    const placeHolderData = await modelInstance.destroy({
+    const promptData= await Prompt.destroy({
       where: {
         id: req.params.id
       }
     });
 
-    if (!placeHolderData) {
-      res.status(404).json({ message: 'No instance found with this id!' });
+    if (!promptData) {
+      res.status(404).json({ message: 'No prompt found with this id!' });
       return;
     }
 
-    res.status(200).json(placeHolderData);
+    res.status(200).json(promptData);
   } catch (err) {
     res.status(500).json(err);
   }

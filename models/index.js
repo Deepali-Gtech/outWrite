@@ -26,6 +26,7 @@ Category.hasMany(Prompt, {
     foreignKey: 'category_id'
 });
 
+<<<<<<< Updated upstream
 // Users have many Comments
 User.hasMany(Comment, {
     foreignKey: 'user_id'
@@ -34,6 +35,18 @@ User.hasMany(Comment, {
 // Users have many Prompts
 User.hasMany(Prompt, {
     foreignKey: 'user_id'
+=======
+// Products belongToMany Tags (through ProductTag)
+Prompt.belongsToMany(Tag, {
+  through: Tag,
+  foreignKey: 'prompt_id'
+});
+
+// Tags belongToMany Products (through ProductTag)
+Tag.belongsToMany(Prompt, {
+  through: Tag,
+  foreignKey: 'tag_id'
+>>>>>>> Stashed changes
 });
 
 

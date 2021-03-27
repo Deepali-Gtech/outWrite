@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Category, Prompt } = require('../../models');
+const { Category, Prompt, Quote } = require('../../models');
 
 // GET all data of instance
 router.get('/', async (req, res) => {
@@ -18,7 +18,7 @@ router.get('/:id', async (req, res) => {
   try {
     const categoryData = await Category.findByPk(req.params.id, {
       // JOIN table data
-      include: [{ model: Prompt}]
+      include: [{ model: Prompt}, {model: Quote}]
     });
 
     if (!categoryData) {

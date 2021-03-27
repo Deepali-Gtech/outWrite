@@ -11,7 +11,7 @@ Quote.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    discription: {
+    description: {
       type: DataTypes.STRING,
       allowNull: false,
     },

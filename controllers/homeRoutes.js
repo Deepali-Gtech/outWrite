@@ -1,13 +1,21 @@
 const router = require("express").Router();
-const { Project, User } = require("../models");
+const { Quote, User } = require("../models");
 const withAuth = require("../utils/auth");
+var shuffle = require('shuffle-array')
 
 router.get("/", async (req, res) => {
   try {
+    const quotes = await Quote.findAll({});
+    const quotesData = quotes.map((quote) => {
+        return quote.dataValues;
+      });
+    shuffle(quotesData);
     res.render("homepage", {
       logged_in: req.session.logged_in,
+      quotesData,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });

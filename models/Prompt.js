@@ -1,6 +1,5 @@
 // importing 
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class Prompt extends Model {}
@@ -15,7 +14,11 @@ Prompt.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        description: {
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false, 
+        },
+        body: {
             type: DataTypes.STRING,
             allowNull: false, 
         },
@@ -28,11 +31,15 @@ Prompt.init(
         },
         user_id: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             references: {
                 model: 'user',
                 key: 'id',
             },
         },
+     
+    }, 
+    {
         sequelize,
         timestamps: false,
         freezeTableName: true,

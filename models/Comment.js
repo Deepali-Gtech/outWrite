@@ -2,11 +2,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Prompt extends Model {}
+class Comment extends Model {}
 
-// creating Prompt model
+// creating Comment model
 
-Prompt.init(
+Comment.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -14,22 +14,25 @@ Prompt.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false, 
-        },
+    
         body: {
             type: DataTypes.STRING,
             allowNull: false, 
         },
-        category_id: {
+        parent_id: {
             type: DataTypes.INTEGER,
-            references: {
-                model: 'category',
-                key: 'id',
-            }
+            allowNull: true,
+
         },
         user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id',
+            },
+        },
+        prompt_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -41,13 +44,13 @@ Prompt.init(
     }, 
     {
         sequelize,
-        timestamps: false,
+        timestamps: true,
         freezeTableName: true,
         underscored: true,
-        modelName: 'prompt',
+        modelName: 'comment',
     }
    
     
 );
 
-module.exports = Prompt;
+module.exports = Comment;

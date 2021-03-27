@@ -4,7 +4,9 @@ const { Category, Prompt } = require('../../models');
 // GET all data of instance
 router.get('/', async (req, res) => {
   try {
-    const categoryData = await Category.findAll(req.params.id);
+    const categoryData = await Category.findAll(req.params.id,{
+      include:[{ model: Prompt}]
+    });
     res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
@@ -33,8 +35,21 @@ router.get('/:id', async (req, res) => {
 // CREATE an instance
 router.post('/', async (req, res) => {
   try {
-    const placeHolderData = await Category.create(req.body);
-    res.status(200).json(placeHolderData);
+    const categoryData = await Category.create(req.body);
+    res.status(200).json(categoryData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.put('/', async (req, res) => {
+  try {
+    const categoryData = await Category.update({
+      where: {
+        id:req.params.id,
+      },
+    });
+    res.status(200).json(categoryData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -43,18 +58,18 @@ router.post('/', async (req, res) => {
 // DELETE an instance
 router.delete('/:id', async (req, res) => {
   try {
-    const placeHolderData = await modelInstance.destroy({
+    const categoryData = await Category.destroy({
       where: {
         id: req.params.id
       }
     });
 
-    if (!placeHolderData) {
-      res.status(404).json({ message: 'No instance found with this id!' });
+    if (!categoryData) {
+      res.status(404).json({ message: 'No category found with this id!' });
       return;
     }
 
-    res.status(200).json(placeHolderData);
+    res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
   }

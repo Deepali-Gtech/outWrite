@@ -1,11 +1,13 @@
 const router = require('express').Router();
-const {  } = require('../../models');
+const { Tag, Prompt, Quote } = require('../../models');
 
 // GET all data of instance
 router.get('/', async (req, res) => {
   try {
-    const placeHolderData = await modelInstance.findAll();
-    res.status(200).json(placeHolderData);
+    const tagData = await Tag.findAll(req.params.id,{
+      include : [{model:Prompt}, {model: Quote}]
+    });
+    res.status(200).json(tagData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -14,17 +16,17 @@ router.get('/', async (req, res) => {
 // GET a single instance
 router.get('/:id', async (req, res) => {
   try {
-    const placeHolderData = await modelInstance.findByPk(req.params.id, {
+    const tagData = await Tag.findByPk(req.params.id, {
       // JOIN table data
-      include: [{ model:}]
+      include: [{ model:Prompt}, {model: Quote}]
     });
 
-    if (!placeHolderData) {
-      res.status(404).json({ message: 'No instance found with this id!' });
+    if (!tagData) {
+      res.status(404).json({ message: 'No tag found with this id!' });
       return;
     }
 
-    res.status(200).json(placeHolderData);
+    res.status(200).json(tagData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -33,8 +35,28 @@ router.get('/:id', async (req, res) => {
 // CREATE an instance
 router.post('/', async (req, res) => {
   try {
-    const placeHolderData = await modelInstance.create(req.body);
-    res.status(200).json(placeHolderData);
+    const tagData = await Tag.create(
+      {
+
+      });
+    res.status(200).json(tagData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.put('/', async (req, res) => {
+  try {
+    const tagData = await Tag.update(
+      {
+        
+      },
+    {
+      where: {
+        id:req.body.id,
+      },
+    });
+    res.status(200).json(tagData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -43,18 +65,18 @@ router.post('/', async (req, res) => {
 // DELETE an instance
 router.delete('/:id', async (req, res) => {
   try {
-    const placeHolderData = await modelInstance.destroy({
+    const tagData = await Tag.destroy({
       where: {
         id: req.params.id
       }
     });
 
-    if (!placeHolderData) {
-      res.status(404).json({ message: 'No instance found with this id!' });
+    if (!tagData) {
+      res.status(404).json({ message: 'No tag found with this id!' });
       return;
     }
 
-    res.status(200).json(placeHolderData);
+    res.status(200).json(tagData);
   } catch (err) {
     res.status(500).json(err);
   }

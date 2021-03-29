@@ -1,4 +1,6 @@
-[
+const {Prompt} = require('../models')
+
+const promptData = [
     {
     "id": "1",
     "description": "The ships hung in the sky in much the same way that bricks don't.",
@@ -16,5 +18,9 @@
     "description": "We all go a little mad sometimes",
     "category_id": "2",
     "user_id": "2"
-}
+},
 ]
+
+const seedPrompt = () => Prompt.bulkCreate(promptData);
+
+module.exports = seedPrompt;

@@ -2,7 +2,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Prompt extends Model {}
+class Prompt extends Model { }
 
 // creating Prompt model
 
@@ -18,9 +18,9 @@ Prompt.init(
             type: DataTypes.STRING,
             allowNull: false, 
         },
-        body: {
+        description: {
             type: DataTypes.STRING,
-            allowNull: false, 
+            allowNull: false,
         },
         category_id: {
             type: DataTypes.INTEGER,
@@ -46,8 +46,8 @@ Prompt.init(
         underscored: true,
         modelName: 'prompt',
     }
-   
-    
+
+
 );
 
 module.exports = Prompt;

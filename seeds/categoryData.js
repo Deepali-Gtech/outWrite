@@ -2,20 +2,16 @@ const { Category } = require('../models');
 
 const categoryData = [
   {
-    "id": 1,
-    category_name: 'Fantasy',
+    name: 'Fantasy',
   },
   {  
-    "id": 2,
-    category_name: 'horror',
+    name: 'horror',
   },
   {
-    "id": 3,
-    category_name: 'Sci-Fi',
+    name: 'Sci-Fi',
   },
   {
-    "id": 4,
-    category_name: 'Romance',
+    name: 'Romance',
   }
   
 ];

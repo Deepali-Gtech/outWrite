@@ -1,7 +1,7 @@
 const sequelize = require('../config/connection');
 const seedQuote = require('./quoteData');
 const seedCategory = require('./categoryData');
-// const seedPrompt = require('./promptData');
+const seedPrompt = require('./promptData');
 const seedTag = require('./tagData');
 const seedUser = require('./userData');
 
@@ -15,8 +15,8 @@ const seedAll = async () => {
   await seedCategory();
   console.log('\n----- CATEGORIES SEEDED -----\n');
  
-  // await seedPrompt();
-  // console.log('\n----- PROMPT SEEDED -----\n');
+  await seedPrompt();
+  console.log('\n----- PROMPT SEEDED -----\n');
 
   await seedQuote();
   console.log('\n----- QUOTE SEEDED -----\n');

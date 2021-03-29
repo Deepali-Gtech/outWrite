@@ -4,10 +4,10 @@ const { Tag, Prompt, Quote } = require('../../models');
 // GET all data of instance
 router.get('/', async (req, res) => {
   try {
-    const promptData = await Tag.findAll(req.params.id,{
+    const tagData = await Tag.findAll(req.params.id,{
       include : [{model:Prompt}, {model: Quote}]
     });
-    res.status(200).json(placeHolderData);
+    res.status(200).json(tagData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -35,7 +35,10 @@ router.get('/:id', async (req, res) => {
 // CREATE an instance
 router.post('/', async (req, res) => {
   try {
-    const tagData = await Tag.create(req.body);
+    const tagData = await Tag.create(
+      {
+
+      });
     res.status(200).json(tagData);
   } catch (err) {
     res.status(400).json(err);
@@ -44,7 +47,11 @@ router.post('/', async (req, res) => {
 
 router.put('/', async (req, res) => {
   try {
-    const tagData = await Tag.update(req.body{
+    const tagData = await Tag.update(
+      {
+        
+      },
+    {
       where: {
         id:req.body.id,
       },

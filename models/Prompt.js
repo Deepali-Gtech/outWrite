@@ -18,7 +18,7 @@ Prompt.init(
             type: DataTypes.STRING,
             allowNull: false, 
         },
-        body: {
+        description: {
             type: DataTypes.STRING,
             allowNull: false,
         },

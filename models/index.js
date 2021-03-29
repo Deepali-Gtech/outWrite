@@ -1,10 +1,10 @@
 // import models
 const User = require('./User');
-// <<<<<<< models
 const Category = require('./Category');
 const Comment = require('./Comment');
 const Prompt = require('./Prompt');
-// const Tag = require('./Tag');
+const Quote = require('./Quote');
+const Tag = require('./Tag');
 
 // Prompt belongsTo User
 Prompt.belongsTo(User, {
@@ -36,13 +36,6 @@ User.hasMany(Prompt, {
     foreignKey: 'user_id'
 });
 
+module.exports = { User, Category, Comment, Prompt, Quote, Tag};
 
 
-
-
-module.exports = { User, Category, Comment, Prompt, };
-// =======
-const Quote = require('./Quote');
-
-module.exports = { User, Quote };
-// >>>>>>> main

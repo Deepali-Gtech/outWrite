@@ -4,6 +4,7 @@ const seedCategory = require('./categoryData');
 const seedPrompt = require('./promptData');
 const seedTag = require('./tagData');
 const seedUser = require('./userData');
+const seedComment = require('./commentData');
 
 const seedAll = async () => {
 
@@ -24,6 +25,9 @@ const seedAll = async () => {
 
   await seedPrompt();
   console.log('\n----- PROMPT SEEDED -----\n');
+  
+  await seedComment();
+  console.log('\n----- COMMENT SEEDED -----\n');
 
   process.exit(0);
 };

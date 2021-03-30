@@ -4,7 +4,7 @@ const { Prompt, Category, User, Comment } = require('../../models');
 // GET all data of instance
 router.get('/', async (req, res) => {
   try {
-    const promptData = await Prompt.findByPk(req.params.id, {
+    const promptData = await Prompt.findAll( {
       // JOIN table data
       include: [{ model: Category }, { model: User }, { model: Comment }]
     });

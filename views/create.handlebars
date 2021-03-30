@@ -7,7 +7,7 @@
                 <div class="column is-one-quarter">
                     <div class="menu">
                         <p class="menu-label">
-                            User Poral
+                            User Portal
                         </p>
                         <ul class="menu-list">
                             <li><a>My Stories</a></li>
@@ -34,6 +34,37 @@
                                     Category
                                 </p>
                                 <input class="input" type="text" placeholder="Text input">
+                                <div class="dropdown">
+                                    <div class="dropdown-trigger">
+                                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                            <span>Dropdown button</span>
+                                            <span class="icon is-small">
+                                                <!--fontawesome required for the icon-->
+                                                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                                        <div class="dropdown-content">
+                                            <a href="#" class="dropdown-item">
+                                                Dropdown item
+                                            </a>
+                                            <a class="dropdown-item">
+                                                Other dropdown item
+                                            </a>
+                                            <a href="#" class="dropdown-item is-active">
+                                                Active dropdown item
+                                            </a>
+                                            <a href="#" class="dropdown-item">
+                                                Other dropdown item
+                                            </a>
+                                            <hr class="dropdown-divider">
+                                            <a href="#" class="dropdown-item">
+                                                With a divider
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </header>
                             <hr>
                             <div class="card-content">
@@ -52,16 +83,16 @@
                             </footer>
 
                         </div>
-                                                    <div class="field is-grouped">
-                                <div class="control">
-                                    <button class="button is-link">Submit</button>
-                                </div>
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button class="button is-link">Submit</button>
                             </div>
+                        </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
+    
 </main>
+<p>{{{get_storyview}}}</p>

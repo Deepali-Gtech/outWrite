@@ -16,7 +16,7 @@ const newFormHandler = async (event) => {
         let json = await response.json();
         document.querySelector('#content').value = json.content;
       } else {
-        alert('Failed to open');
+        alert('Failed to open. Got response status:' + response.status);
       }
     
   };

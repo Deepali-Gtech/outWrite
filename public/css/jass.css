@@ -1702,4 +1702,8 @@ form [type='radio'] {
   .align-content-center-xl {
     align-content: center;
   }
+  .navbar-menu
+  {
+    color: rgb(82, 105, 38);
+  }
 }

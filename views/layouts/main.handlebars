@@ -10,12 +10,17 @@
 </head>
 
 <body>
+  <div class="container is-fullhd">
+  <div class="notification is-primary">
   <div class="flex-column justify-space-around">
     <header>
       <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a class="navbar-item" href="/">
-            <img src="./images/outwrite.png" width="200">
+          <a>
+          {{!-- class="navbar-item" href="/"> --}}
+        
+            <img src="./images/o.png" width="200">
+            
           </a>
 
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -73,6 +78,8 @@
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+    </div>
+</div>
 </body>
 
 </html>

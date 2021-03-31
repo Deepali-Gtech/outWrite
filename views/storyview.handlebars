@@ -20,19 +20,56 @@
                 <div class="column is-three-quarters">
                     <div class="hero-body">
                         <p class="title">
-                            {Story Title}
+                            {{prompt.title}}
                         </p>
                         <p class="subtitle">
-                            {Username}
+                            {{prompt.user.name}}
                         </p>
                         <div class="card">
                             <div class="card-content">
                                 <div class="content">
                                     <div class="control">
-                                        <textarea class="textarea" readonly>{{quotesData.[0].description}}</textarea>
+                                        <div class="prompt" >{{prompt.description}}</div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="add-comment">
+                        <div>[Comment input goes here]</div>
+                    </div>
+                    <div class="container ml-3 pl-5">
+                        <div class="comments">
+                            {{#each prompt.comments as |comment|}}
+                            {{#unless comment.parent_id}}
+                            <div class="card ml-5">
+                                <div class="card-content">
+                                    <div class="content">
+                                        <div class="control">
+                                            <div> {{comment.body}} </div>
+                                            <small>{{comment.user.name}}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/unless}}
+                            {{/each}}
+                        </div>
+                        <div class="comments">
+                            {{#each prompt.comments as |comment|}}
+                            {{#if comment.parent_id}}
+                            <div class="card ml-5">
+                                <div class="card-content">
+                                    <div class="content">
+                                        <div class="control">
+                                            <div> {{comment.body}} </div>
+                                            <small>{{comment.user.name}}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/if}}
+                            {{/each}}
                         </div>
                     </div>
                 </div>

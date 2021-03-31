@@ -42,7 +42,9 @@ Comment.belongsTo(User, {
 
 Comment.belongsTo(Prompt, {
     foreignKey: 'prompt_id'
-} )
+
+});
+
 
 module.exports = { User, Category, Comment, Prompt, Quote, Tag};
 

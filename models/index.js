@@ -36,6 +36,14 @@ User.hasMany(Prompt, {
     foreignKey: 'user_id'
 });
 
+Comment.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+Comment.belongsTo(Prompt, {
+    foreignKey: 'prompt_id'
+});
+
 module.exports = { User, Category, Comment, Prompt, Quote, Tag};
 
 

@@ -72,13 +72,13 @@
                                     <p class="card-header-title">
                                         Prompt
                                     </p>
-                                    <textarea class="textarea" placeholder="Enter text here or generate random text"
+                                    <textarea class="textarea" id="content" placeholder="Enter text here or generate random text"
                                         rows="10"></textarea>
                                 </div>
                             </div>
                             <footer class="card-footer">
                                 <a href="" class="card-footer-item">User Quote</a>
-                                <a href="/storypage" class="card-footer-item">Random Quote</a>
+                                <a class="card-footer-item random-quote">Random Quote</a>
                                 <a href="#" class="card-footer-item">Random Text</a>
                             </footer>
 
@@ -93,6 +93,7 @@
             </div>
         </div>
     </div>
-    
 </main>
 <p>{{{get_storyview}}}</p>
+
+<script src="./js/prompt.js"></script>

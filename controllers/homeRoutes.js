@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 
 router.get("/create", async (req, res) => {
   try {
-    res.render("storypage", {
+    res.render("create", {
       logged_in: req.session.logged_in,
     });
   } catch (err) {

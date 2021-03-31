@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Project, Quote, User } = require("../models");
+const { Prompt, Comment, User } = require("../models");
 const withAuth = require("../utils/auth");
 var shuffle = require('shuffle-array')
 
@@ -34,16 +34,18 @@ router.get("/dashboard", async (req, res) => {
 });
 
 
-router.get("/storyview", async (req, res) => {
+router.get("/storyview/:prompt_id", async (req, res) => {
   try {
-    const quotes = await Quote.findAll({});
-    const quotesData = quotes.map((quote) => {
-        return quote.dataValues;
-      });
-    shuffle(quotesData);
+    const id = req.params.prompt_id;
+    const prompt = await Prompt.findByPk(id, {
+      include: [User, {model: Comment, include: [User]}]
+    });
+    //serialize our data (remove all the extra junk that sequelize adds to this array of objects)
+    const promptData = prompt.get({plain: true});
+    console.log(promptData)
     res.render("storyview", {
       logged_in: req.session.logged_in,
-      quotesData,
+      prompt: promptData
     });
   } catch (err) {
     console.log(err);

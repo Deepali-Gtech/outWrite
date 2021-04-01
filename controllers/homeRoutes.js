@@ -25,7 +25,7 @@ router.get("/create", async (req, res) => {
 
 router.get("/dashboard", async (req, res) => {
   try {
-    const storyData = await Story.findAll({
+    const storyData = await Prompt.findAll({
       include: [{ model: User }],
       // where: {
       //   user_id: req.session.user_id,
@@ -53,7 +53,10 @@ router.get("/storyview/:prompt_id", async (req, res) => {
   try {
     const id = req.params.prompt_id;
     const prompt = await Prompt.findByPk(id, {
-      include: [User, {model: Comment, include: [User]}]
+      include: [
+        User, 
+        //{model: Comment, include: [User]}
+      ]
     });
     //serialize our data (remove all the extra junk that sequelize adds to this array of objects)
     const promptData = prompt.get({plain: true});

@@ -5,9 +5,15 @@ const Comment = require('./Comment');
 const Prompt = require('./Prompt');
 const Quote = require('./Quote');
 const Tag = require('./Tag');
+const Story = require('./Story');
+
 
 // Prompt belongsTo User
 Prompt.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+Story.belongsTo(User, {
     foreignKey: 'user_id'
 });
 
@@ -33,6 +39,9 @@ User.hasMany(Comment, {
 
 // Users have many Prompts
 User.hasMany(Prompt, {
+    foreignKey: 'user_id'
+});
+User.hasMany(Story, {
     foreignKey: 'user_id'
 });
 

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Prompt, Comment, User } = require("../models");
+const { Prompt, Comment, User, Story } = require("../models");
 const withAuth = require("../utils/auth");
 var shuffle = require('shuffle-array')
 
@@ -25,7 +25,18 @@ router.get("/create", async (req, res) => {
 
 router.get("/dashboard", async (req, res) => {
   try {
+    const storyData = await Story.findAll({
+      include: [{ model: User }],
+      where: {
+        user_id: req.session.user_id,
+      },
+    });
+
+    // Serialize data so the template can read it
+    const stories = storyData.map((story) => story.get({ plain: true }));
+    console.log(stories);
     res.render("dashboard", {
+      stories,
       logged_in: req.session.logged_in,
     });
   } catch (err) {

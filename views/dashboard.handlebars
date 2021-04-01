@@ -15,13 +15,15 @@
           </ul>
         </div>
       </div>
+      
       <div class="column is-three-quarters">
+        {{#each prompts as | prompt|}}
         <div class="hero-body">
           <p class="title">
-            {{stories.[0].title}}
+            {{prompt.title}}
           </p>
           <p class="subtitle">
-            {{stories.[0].user.name}}
+            {{prompt.user.name}}
           </p>
           <div class="card">
             <header class="$card-header">
@@ -32,17 +34,18 @@
             <hr>
             <div class="card-content">
               <div class="content">
-                {{stories.[0].content}}
+                {{prompt.description}}
               </div>
             </div>
             <footer class="card-footer">
-              <a href="/storyview" class="card-footer-item">Select</a>
-              <a href="#" class="card-footer-item">Favorite</a>
+              <a href="/storyview?prompt_id={{prompt.id}}" class="card-footer-item">Comments</a>
+              <a href="#" class="card-footer-item">Edit</a>
             </footer>
           </div>
         </div>
-
+{{/each}}
       </div>
+      
     </div>
   </div>
 </div>

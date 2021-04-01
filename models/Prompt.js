@@ -37,7 +37,11 @@ Prompt.init(
                 key: 'id',
             },
         },
-     
+        date_created: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+          },
     }, 
     {
         sequelize,

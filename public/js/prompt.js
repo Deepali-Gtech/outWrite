@@ -28,9 +28,9 @@ const newFormHandler = async (event) => {
   const content = document.querySelector('#content').value.trim();
 
   if (title && content ) {
-    const response = await fetch('/api/story/', {
+    const response = await fetch('/api/prompts/', {
       method: 'POST',
-      body: JSON.stringify({ title, content }),
+      body: JSON.stringify({ title: title, description: content }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -39,7 +39,7 @@ const newFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert('Failed to create story. Got response statue: ' + response.status);
+      alert('Failed to create story. Got response status: ' + response.status);
     }
   }
 };

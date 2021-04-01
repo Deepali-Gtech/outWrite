@@ -7,7 +7,7 @@
                 <div class="column is-one-quarter">
                     <div class="menu">
                         <p class="menu-label">
-                            User Poral
+                            User Portal
                         </p>
                         <ul class="menu-list">
                             <li><a>My Stories</a></li>
@@ -29,16 +29,27 @@
                             <div class="card-content">
                                 <div class="content">
                                     <div class="control">
-                                        <div class="prompt" >{{prompt.description}}</div>
+                                        <div class="prompt">{{prompt.description}}</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="add-comment">
-                        <div>[Comment input goes here]</div>
+                    <div class="add-comment ml-5">
+                        <div class="">
+                            <div class="content">
+                                <p class="card-header-title">
+                                    Comment
+                                </p>
+                                <textarea class="textarea" id='newcomment' placeholder="Enter your comment"
+                                    rows="3"></textarea>
+                            </div>
+                             <footer class="card-footer mb-5">
+                                <a href="../" class="card-footer-item" id="sub-comment">Submit Comment </a>
+                            </footer>
+                        </div>
                     </div>
-                    <div class="container ml-3 pl-5">
+                    <div class="container ml-3 mt-3 pl-5">
                         <div class="comments">
                             {{#each prompt.comments as |comment|}}
                             {{#unless comment.parent_id}}

@@ -18,10 +18,10 @@
       <div class="column is-three-quarters">
         <div class="hero-body">
           <p class="title">
-            {Story Title}
+            {{stories.[0].title}}
           </p>
           <p class="subtitle">
-            {Username}
+            {{stories.[0].user.name}}
           </p>
           <div class="card">
             <header class="$card-header">
@@ -32,12 +32,7 @@
             <hr>
             <div class="card-content">
               <div class="content">
-                Godzilla is really good? That would be my opinion. I also like that the monster is more humanistic on
-                the surface. It makes him think more deeply than I ever do, instead of putting into words the horrors of
-                the Apocalypse. But it also makes him feel better about himself, which makes him feel more alive. And
-                when he dies, it looks just as good, like he's on the move, his life back up at his feet. The feeling of
-                that death is so incredibly beautiful. I would say that this is going to be an incredibly important and
-                emotional and touching story to read.
+                {{stories.[0].content}}
               </div>
             </div>
             <footer class="card-footer">

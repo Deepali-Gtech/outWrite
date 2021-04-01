@@ -27,9 +27,13 @@ router.get("/dashboard", async (req, res) => {
   try {
     const storyData = await Story.findAll({
       include: [{ model: User }],
-      where: {
-        user_id: req.session.user_id,
-      },
+      // where: {
+      //   user_id: req.session.user_id,
+      // },
+      order: [
+        // Will escape title and validate DESC against a list of valid direction parameters
+        ['date_created', 'DESC'],
+      ],
     });
 
     // Serialize data so the template can read it

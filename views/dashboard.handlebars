@@ -15,13 +15,15 @@
           </ul>
         </div>
       </div>
+      
       <div class="column is-three-quarters">
+        {{#each stories as |story|}}
         <div class="hero-body">
           <p class="title">
-            {{stories.[0].title}}
+            {{story.title}}
           </p>
           <p class="subtitle">
-            {{stories.[0].user.name}}
+            {{story.user.name}}
           </p>
           <div class="card">
             <header class="$card-header">
@@ -32,17 +34,18 @@
             <hr>
             <div class="card-content">
               <div class="content">
-                {{stories.[0].content}}
+                {{story.content}}
               </div>
             </div>
             <footer class="card-footer">
-              <a href="/storyview" class="card-footer-item">Select</a>
+              <a href="/storyview" class="card-footer-item">comments</a>
               <a href="#" class="card-footer-item">Favorite</a>
             </footer>
           </div>
         </div>
-
+{{/each}}
       </div>
+      
     </div>
   </div>
 </div>

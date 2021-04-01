@@ -56,6 +56,9 @@ router.get("/storyview", async (req, res) => {
       include: [
         User, 
         {model: Comment, include: [User]}
+      ],
+      order: [
+        ['comment.parent.id','DESC']
       ]
     });
     //serialize our data (remove all the extra junk that sequelize adds to this array of objects)

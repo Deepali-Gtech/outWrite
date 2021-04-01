@@ -52,11 +52,7 @@
                                 </div>
                             </div>
                             {{/unless}}
-                            {{/each}}
-                        </div>
-                        <div class="comments">
-                            {{#each prompt.comments as |comment|}}
-                            {{#if comment.parent_id}}
+                                   {{#if comment.parent_id}}
                             <div class="card ml-5">
                                 <div class="card-content">
                                     <div class="content">
@@ -68,6 +64,11 @@
                                 </div>
                             </div>
                             {{/if}}
+                            {{/each}}
+                        </div>
+                        <div class="comments">
+                            {{#each prompt.comments as |comment|}}
+                     
                             {{/each}}
                         </div>
                          <div class="add-comment ml-5">

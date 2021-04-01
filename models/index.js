@@ -55,6 +55,6 @@ Comment.belongsTo(Prompt, {
 });
 
 
-module.exports = { User, Category, Comment, Prompt, Quote, Tag};
+module.exports = { User, Category, Comment, Prompt, Quote, Tag, Story};
 
 

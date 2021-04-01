@@ -17,13 +17,13 @@
       </div>
       
       <div class="column is-three-quarters">
-        {{#each stories as |story|}}
+        {{#each prompts as | prompt|}}
         <div class="hero-body">
           <p class="title">
-            {{story.title}}
+            {{prompt.title}}
           </p>
           <p class="subtitle">
-            {{story.user.name}}
+            {{prompt.user.name}}
           </p>
           <div class="card">
             <header class="$card-header">
@@ -34,11 +34,11 @@
             <hr>
             <div class="card-content">
               <div class="content">
-                {{story.description}}
+                {{prompt.description}}
               </div>
             </div>
             <footer class="card-footer">
-              <a href="/storyview/{{story.id}}" class="card-footer-item">Comments</a>
+              <a href="/storyview?prompt_id={{prompt.id}}" class="card-footer-item">Comments</a>
               <a href="#" class="card-footer-item">Edit</a>
             </footer>
           </div>

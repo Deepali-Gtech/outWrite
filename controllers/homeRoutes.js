@@ -55,7 +55,7 @@ router.get("/storyview", async (req, res) => {
     const prompt = await Prompt.findByPk(id, {
       include: [
         User, 
-        //{model: Comment, include: [User]}
+        {model: Comment, include: [User]}
       ]
     });
     //serialize our data (remove all the extra junk that sequelize adds to this array of objects)

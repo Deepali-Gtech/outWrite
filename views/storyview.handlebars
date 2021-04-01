@@ -17,6 +17,7 @@
                         </ul>
                     </div>
                 </div>
+                <input type="hidden" id="prompt-id" name="prompt-id" value="{{prompt.id}}">
                 <div class="column is-three-quarters">
                     <div class="hero-body">
                         <p class="title">
@@ -35,20 +36,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="add-comment ml-5">
-                        <div class="">
-                            <div class="content">
-                                <p class="card-header-title">
-                                    Comment
-                                </p>
-                                <textarea class="textarea" id='newcomment' placeholder="Enter your comment"
-                                    rows="3"></textarea>
-                            </div>
-                             <footer class="card-footer mb-5">
-                                <a href="../" class="card-footer-item" id="sub-comment">Submit Comment </a>
-                            </footer>
-                        </div>
-                    </div>
+                   
                     <div class="container ml-3 mt-3 pl-5">
                         <div class="comments">
                             {{#each prompt.comments as |comment|}}
@@ -82,7 +70,24 @@
                             {{/if}}
                             {{/each}}
                         </div>
+                         <div class="add-comment ml-5">
+                        <form class="form new-project-form">
+                            <div class="">
+                                <div class="content">
+                                    <p class="card-header-title">
+                                        Comment
+                                    </p>
+                                    <textarea class="textarea" id='newcomment' placeholder="Enter your comment"
+                                        rows="3"></textarea>
+                                </div>
+                                <footer class="card-footer mb-5">
+                                    <button type="submit" class="card-footer-item" id="sub-comment">Submit Comment</button>
+                                </footer>
+                            </div>
+                        </form>
                     </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>

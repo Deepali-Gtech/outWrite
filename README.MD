@@ -28,6 +28,8 @@ For our group Julian worked on the frontend, Alyssa and Kimo worked on the backe
 
 -[Bootstrap](https://getbootstrap.com/)
 
+-[Bulma](https://bulma.io/)
+
 ### Challenges
 From the start we knew our idea to create nested responses was going to be a challenge and we were right. 
 
@@ -54,4 +56,11 @@ ___
 3. Edit button
 4. Recommended Posts Page
 5. Drafts folder
-6. Add more dynamic elements to the home page
+6. Add more dynamic elements to the home page  
+  
+  
+## Collaborators 
+[Deepali Garg](https://github.com/Deepali-Gtech)  
+[Rasbikimo Cleckley](https://github.com/Rasbakimo)  
+[Julian Clay](https://github.com/jaclay1994)  
+[Alyssa Andres](https://github.com/a-andres1)  

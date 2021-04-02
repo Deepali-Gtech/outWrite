@@ -1,0 +1,103 @@
+<main class="container container-fluid mt-5">
+    <!-- Render the sub layout -->
+    <div class="columns">
+        <div class="column">
+            <p class="bd-notification">Welcome</p>
+            <div class="columns is-mobile">
+                <div class="column is-one-quarter">
+                    <div class="menu">
+                        <p class="menu-label">
+                            User Portal
+                        </p>
+                        <ul class="menu-list">
+                            <li><a href="/mystories">My Stories</a></li>
+                            {{!-- <li><a>Favorites</a></li>
+                            <li><a>Drafts</a></li>
+                            <li><a>Recommended</a></li> --}}
+                        </ul>
+                    </div>
+                </div>
+
+    <form class="form new-project-form">
+                <div class="column is-three-quarters">
+                    <div class="hero-body">
+                        <p class="title">
+                        <div class="field">
+                            <label class="label">Story Title</label>
+
+                            <div class="control">
+                                <input class="input" type="text" placeholder="Text input" id = "title" value={{prompt.title}}>
+                                <p class="help">usernameß</p>
+                            </div>
+                        </div>
+                        </p>
+                        <div class="card">
+                            <header class="card-content">
+                                <p class="card-header-title">
+                                    Category
+                                </p>
+                                <input class="input" type="text" placeholder="Text input">
+                                <div class="dropdown">
+                                    <div class="dropdown-trigger">
+                                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                            <span>Dropdown button</span>
+                                            <span class="icon is-small">
+                                                <!--fontawesome required for the icon-->
+                                                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                                        <div class="dropdown-content">
+                                            <a href="#" class="dropdown-item">
+                                                Dropdown item
+                                            </a>
+                                            <a class="dropdown-item">
+                                                Other dropdown item
+                                            </a>
+                                            <a href="#" class="dropdown-item is-active">
+                                                Active dropdown item
+                                            </a>
+                                            <a href="#" class="dropdown-item">
+                                                Other dropdown item
+                                            </a>
+                                            <hr class="dropdown-divider">
+                                            <a href="#" class="dropdown-item">
+                                                With a divider
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </header>
+                            <hr>
+                            <div class="card-content">
+                                <div class="content">
+                                    <p class="card-header-title">
+                                        Prompt
+                                    </p>
+                                    <textarea class="textarea" id="content" placeholder="Enter text here or generate random text"
+                                        rows="10">{{prompt.description}}</textarea>
+                                </div>
+                            </div>
+                            <footer class="card-footer">
+                                <a href="" class="card-footer-item">User Quote</a>
+                                <a class="card-footer-item random-quote">Random Quote</a>
+                                <a href="#" class="card-footer-item">Random Text</a>
+                            </footer>
+
+                        </div>
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button type="submit" class="button is-link">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<script src="./js/edit.js"></script>

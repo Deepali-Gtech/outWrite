@@ -1,0 +1,53 @@
+<div class="columns">
+  <div class="column">
+    <p class="bd-notification">Welcome</p>
+    <div class="columns is-mobile">
+      <div class="column is-one-quarter">
+        <div class="menu">
+          <p class="menu-label">
+            User Portal
+          </p>
+          <ul class="menu-list">
+            <li><a>My Stories</a></li>
+            {{!-- <li><a>Favorites</a></li>
+            <li><a>Drafts</a></li>
+            <li><a>Recommended</a></li> --}}
+          </ul>
+        </div>
+      </div>
+      
+      <div class="column is-three-quarters">
+        {{#each prompts as | prompt|}}
+        <div class="hero-body">
+          <p class="title">
+            {{prompt.title}}
+          </p>
+          <p class="subtitle">
+            {{prompt.user.name}}
+          </p>
+          <div class="card">
+            <header class="$card-header">
+              <p class="card-header-title">
+                {Category}
+              </p>
+            </header>
+            <hr>
+            <div class="card-content">
+              <div class="content">
+                {{prompt.description}}
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a href="/storyview?prompt_id={{prompt.id}}" class="card-footer-item">Comments</a>
+              <a href="#" class="card-footer-item">Edit</a>
+            </footer>
+          </div>
+        </div>
+{{/each}}
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script src="../public/js/mystories.js"></script>

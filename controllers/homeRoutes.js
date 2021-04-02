@@ -37,7 +37,7 @@ router.get("/dashboard", async (req, res) => {
     });
 
     // Serialize data so the template can read it
-    const  prompts = promptData.map((prompt) => prompt.get({ plain: true }));
+    const prompts = promptData.map((prompt) => prompt.get({ plain: true }));
     console.log(prompts);
     res.render("dashboard", {
       prompts,
@@ -48,21 +48,24 @@ router.get("/dashboard", async (req, res) => {
   }
 });
 
+// mystories route
+
+
 
 router.get("/storyview", async (req, res) => {
   try {
     const id = req.query.prompt_id;
     const prompt = await Prompt.findByPk(id, {
       include: [
-        User, 
-        {model: Comment, include: [User]}
+        User,
+        { model: Comment, include: [User] }
       ],
       order: [
-        ['comment.parent.id','DESC']
+        ['comment.parent.id', 'DESC']
       ]
     });
     //serialize our data (remove all the extra junk that sequelize adds to this array of objects)
-    const promptData = prompt.get({plain: true});
+    const promptData = prompt.get({ plain: true });
     console.log(promptData)
     res.render("storyview", {
       logged_in: req.session.logged_in,
@@ -101,6 +104,32 @@ router.get("/login", (req, res) => {
   }
 
   res.render("login");
+});
+
+router.get("/mystories", async (req, res) => {
+  console.log("my stories route")
+  try {
+    const promptData = await Prompt.findAll({
+      include: [{ model: User }],
+      where: {
+        user_id: req.session.user_id,
+      },
+      order: [
+        // Will escape title and validate DESC against a list of valid direction parameters
+        ['date_created', 'DESC'],
+      ],
+    });
+
+    // Serialize data so the template can read it
+    const prompts = promptData.map((prompt) => prompt.get({ plain: true }));
+    console.log(prompts);
+    res.render("mystories", {
+      prompts,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

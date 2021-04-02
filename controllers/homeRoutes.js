@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Prompt, Comment, User, Story } = require("../models");
+const { Prompt, Comment, User,  } = require("../models");
 const withAuth = require("../utils/auth");
 var shuffle = require('shuffle-array')
 
@@ -40,6 +40,31 @@ router.get("/dashboard", async (req, res) => {
     const  prompts = promptData.map((prompt) => prompt.get({ plain: true }));
     console.log(prompts);
     res.render("dashboard", {
+      prompts,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/mystories", async (req, res) => {
+  try {
+    const promptData = await Prompt.findAll({
+      include: [{ model: User }],
+      where: {
+        user_id: req.session.user_id,
+      },
+      order: [
+        // Will escape title and validate DESC against a list of valid direction parameters
+        ['date_created', 'DESC'],
+      ],
+    });
+
+    // Serialize data so the template can read it
+    const  prompts = promptData.map((prompt) => prompt.get({ plain: true }));
+    console.log(prompts);
+    res.render("mystories", {
       prompts,
       logged_in: req.session.logged_in,
     });

@@ -64,7 +64,7 @@ router.get("/storyview", async (req, res) => {
         }
       ],
       order: [
-        [ { model: Comment, as: 'comments' }, 'parent_id', 'DESC'], 
+        [ { model: Comment, as: 'comments' }, 'parent_id', 'ASC'], 
         //['comment.parent_id', 'ASC']
       ]
     });

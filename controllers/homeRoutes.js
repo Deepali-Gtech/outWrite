@@ -23,6 +23,26 @@ router.get("/create", async (req, res) => {
   }
 });
 
+router.get("/edit", async (req, res) => {
+  try {
+    const id = req.query.prompt_id;
+    const prompt = await Prompt.findByPk(id, {
+      include: [
+        User,
+       ],
+    });
+    //serialize our data (remove all the extra junk that sequelize adds to this array of objects)
+    const promptData = prompt.get({ plain: true });
+    console.log(promptData)
+    res.render("edit", {
+      logged_in: req.session.logged_in,
+      prompt: promptData
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get("/dashboard", async (req, res) => {
   try {
     const promptData = await Prompt.findAll({

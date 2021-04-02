@@ -57,12 +57,13 @@ router.post('/', async (req, res) => {
 
 });
 
-router.put('/', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const promptData = await Prompt.update({
       title: req.body.title,
       description: req.body.description,
-      category_id: req.body.category_id
+      category_id: req.body.category_id,
+      user_id: req.session.user_id,
     },
       {
         where: {

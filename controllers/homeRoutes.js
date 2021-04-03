@@ -15,6 +15,10 @@ router.get("/", async (req, res) => {
 
 router.get("/create", async (req, res) => {
   try {
+    if (!req.session.logged_in) {
+      res.redirect('/login');
+      return;
+    }
     res.render("create", {
       logged_in: req.session.logged_in,
     });
@@ -25,6 +29,10 @@ router.get("/create", async (req, res) => {
 
 router.get("/edit", async (req, res) => {
   try {
+    if (!req.session.logged_in) {
+      res.redirect('/login');
+      return;
+    }
     const id = req.query.prompt_id;
     const prompt = await Prompt.findByPk(id, {
       include: [
@@ -70,10 +78,12 @@ router.get("/dashboard", async (req, res) => {
 
 // mystories route
 
-
-
 router.get("/storyview", async (req, res) => {
   try {
+    if (!req.session.logged_in) {
+      res.redirect('/login');
+      return;
+    }
     const id = req.query.prompt_id;
     const prompt = await Prompt.findByPk(id, {
       include: [
@@ -133,6 +143,10 @@ router.get("/login", (req, res) => {
 router.get("/mystories", async (req, res) => {
   console.log("my stories route")
   try {
+    if (!req.session.logged_in) {
+      res.redirect('/login');
+      return;
+    }
     const promptData = await Prompt.findAll({
       include: [{ model: User }],
       where: {

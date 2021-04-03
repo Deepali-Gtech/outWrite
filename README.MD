@@ -64,3 +64,12 @@ ___
 [Rasbikimo Cleckley](https://github.com/Rasbakimo)  
 [Julian Clay](https://github.com/jaclay1994)  
 [Alyssa Andres](https://github.com/a-andres1)  
+
+## Screenshots
+![gif](./Assets/OUTwrite.gif)  
+
+
+![screenshot](./Assets/outWrite.png)
+
+## Slides
+[Slides](./Assets/OUTWrite.pdf)

@@ -19,7 +19,7 @@ Prompt.init(
             allowNull: false, 
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(2048),
             allowNull: false,
         },
         category_id: {
